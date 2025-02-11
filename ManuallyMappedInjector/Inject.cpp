@@ -224,10 +224,10 @@ static bool LaunchShellcode(HANDLE hProcess, LPVOID pBase) {
 	data.pGetProcAddress = GetProcAddress;
 
 	LPVOID pShellCodeMemory = VirtualAllocEx(
-		hProcess													/*hProcess*/,
-		nullptr														/*lpAddress*/,
-		sysInfo.dwAllocationGranularity								/*dwSize*/,
-		MEM_COMMIT | MEM_RESERVE									/*flAllocationType*/,
+		hProcess,
+		nullptr,
+		sysInfo.dwAllocationGranularity,
+		MEM_COMMIT | MEM_RESERVE,
 		PAGE_EXECUTE_READWRITE);
 
 	if (pShellCodeMemory == nullptr)
@@ -245,11 +245,11 @@ static bool LaunchShellcode(HANDLE hProcess, LPVOID pBase) {
 	SIZE_T numBytesWritten = 0;
 #pragma warning(suppress: 6387)
 	if (!WriteProcessMemory(
-		hProcess																/*hProcess*/,
-		pShellCodeMemory														/*lpBaseAddress*/,
-		&data																	/*lpBuffer*/,
-		sizeof(MappingData)														/*nSize*/,
-		&numBytesWritten														/*lpNumberOfBytesWritten*/))
+		hProcess,
+		pShellCodeMemory,
+		&data,
+		sizeof(MappingData),
+		&numBytesWritten))
 	{
 		std::cout << "Failed to write shellcode into target program memory!" << std::endl;
 		return false;
@@ -268,11 +268,11 @@ static bool LaunchShellcode(HANDLE hProcess, LPVOID pBase) {
 	// alternatively we can just use a really big number
 
 	if (!WriteProcessMemory(
-		hProcess																/*hProcess*/,
-		reinterpret_cast<LPVOID>(pTargetProcThreadRoutine)						/*lpBaseAddress*/,
-		reinterpret_cast<LPVOID>(Shellcode)										/*lpBuffer*/,
-		0x1000																	/*nSize*/,
-		&numBytesWritten														/*lpNumberOfBytesWritten*/))
+		hProcess,
+		reinterpret_cast<LPVOID>(pTargetProcThreadRoutine),
+		reinterpret_cast<LPVOID>(Shellcode),
+		0x1000,
+		&numBytesWritten))
 	{
 		std::cout << "Failed to write shellcode into target program memory!" << std::endl;
 		return false;
@@ -282,13 +282,13 @@ static bool LaunchShellcode(HANDLE hProcess, LPVOID pBase) {
 	std::cout << pShellCodeMemory << std::endl;
 
 	HANDLE hThread = CreateRemoteThread(
-		hProcess											/*hProcess*/,
-		nullptr												/*lpThreadAttributes*/,
-		0 /* use default stack size*/						/*dwStackSize*/,
-		pTargetProcThreadRoutine							/*lpStartAddress*/,
-		pShellCodeMemory									/*lpParameter*/,
-		0													/*dwCreationFlags*/,
-		nullptr												/*lpThreadId*/
+		hProcess,
+		nullptr,
+		0 /* use default stack size*/,
+		pTargetProcThreadRoutine,
+		pShellCodeMemory,
+		0,
+		nullptr
 	);
 
 	if (hThread == nullptr || hThread == INVALID_HANDLE_VALUE)
@@ -340,10 +340,10 @@ int main()
 
 	// 4. ALLOCATE MEMORY IN THE TARGET PROCESS
 	LPVOID pMemory = VirtualAllocEx(
-		hProcess													/*hProcess*/,
-		nullptr														/*lpAddress*/,
-		szBytesImage												/*dwSize*/,
-		MEM_COMMIT | MEM_RESERVE									/*flAllocationType*/,
+		hProcess,
+		nullptr,
+		szBytesImage,
+		MEM_COMMIT | MEM_RESERVE,
 		PAGE_EXECUTE_READWRITE);
 	if (pMemory == nullptr)
 	{
@@ -373,11 +373,11 @@ int main()
 		SIZE_T numBytesWritten = 0;
 
 		if (!WriteProcessMemory(
-			hProcess																/*hProcess*/,
-			reinterpret_cast<LPVOID>((BYTE *)pMemory + pSection->VirtualAddress)		/*lpBaseAddress*/,
-			(dllFileContents.data() + pSection->PointerToRawData)					/*lpBuffer*/,
-			pSection->SizeOfRawData													/*nSize*/,
-			&numBytesWritten														/*lpNumberOfBytesWritten*/
+			hProcess,
+			reinterpret_cast<LPVOID>((BYTE *)pMemory + pSection->VirtualAddress),
+			(dllFileContents.data() + pSection->PointerToRawData),
+			pSection->SizeOfRawData,
+			&numBytesWritten
 		))
 		{
 			std::cout << "Failed to map section " << sectionName << std::endl;

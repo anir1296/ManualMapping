@@ -36,13 +36,13 @@ int main()
 	DWORD threadId;
 	//4. Create a remote thread in the target process
 	HANDLE remoteThreadHandle = CreateRemoteThread(
-		hProcess																				/*hProcess*/,
-		NULL																					/*lpThreadAttributes*/,
-		0																						/*dwStackSize*/,
-		lpLoadLibraryAddr																		/*lpStartAddress*/,
-		lpDllPath																				/*lpParameter*/,
-		0																						/*dwCreationFlags*/,
-		&threadId																				/*lpThreadId*/
+		hProcess,
+		NULL,
+		0,
+		lpLoadLibraryAddr,
+		lpDllPath,
+		0,
+		&threadId
 	);
 
 	if (remoteThreadHandle == NULL)
