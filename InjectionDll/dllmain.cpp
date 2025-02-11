@@ -11,7 +11,7 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 	case DLL_PROCESS_ATTACH:
 	case DLL_THREAD_ATTACH:
 	{
-		//::MessageBoxW(::GetConsoleWindow(), L"The dll has been succesfully injected into this program", L"Injection successful", MB_OKCANCEL | MB_ICONEXCLAMATION);
+		::MessageBoxW(::GetConsoleWindow(), L"The dll has been succesfully injected into this program", L"Injection successful", MB_OKCANCEL | MB_ICONEXCLAMATION);
 		break;
 	}
 	case DLL_THREAD_DETACH:

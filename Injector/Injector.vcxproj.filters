@@ -18,10 +18,8 @@
     <ClCompile Include="Inject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Shared.hpp">
-      <Filter>Source Files</Filter>
-    </ClInclude>
+    <ClCompile Include="Shared.hpp">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

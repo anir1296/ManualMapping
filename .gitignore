@@ -1,0 +1,11 @@
+.vs/**
+Debug/**
+x64/**
+*.pdb
+*.tlog
+*.ilk
+*.idb
+*.exe
+*.dll
+**/x64/**
+**/Debug/**

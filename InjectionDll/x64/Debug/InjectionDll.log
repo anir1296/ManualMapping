@@ -1,2 +1,3 @@
-﻿  dllmain.cpp
-  InjectionDll.vcxproj -> C:\Users\Anirudh\source\repos\ManualMapping\x64\Debug\InjectionDll.dll
+﻿  pch.cpp
+  dllmain.cpp
+  InjectionDll.vcxproj -> C:\Users\anir1\OneDrive\Desktop\ManualMapping\x64\Debug\InjectionDll.dll
