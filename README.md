@@ -8,7 +8,7 @@ However, it is very complicated because you have to emulate everything LoadLibra
 
 Solution uses VS2022.
 For a simple DLL injection demonstration, see Injector project.
-For manual mapping, see ManualMappingInjector project.
+For manual mapping, see ManualMappingInjector project
 
 ## Resources and Examples:
 1. Complete video tutorial:
