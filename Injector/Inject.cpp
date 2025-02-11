@@ -7,7 +7,7 @@
 
 HANDLE FindProcess(const WCHAR* processImageName);
 
-static const std::string pathToDll = "C:\\Users\\Anirudh\\source\\repos\\ManualMapping\\x64\\Debug\\InjectionDll.dll";
+static const std::string pathToDll = "<path to dll>";
 
 int main()
 {
