@@ -1,10 +1,10 @@
 
 ## Overview:
 Manual mapped injection (also called retrospective/introspective injection)
-involves mapping a dll into a target process without calling LoadLibrary in the target process
+involves mapping a dll into a target process without calling LoadLibrary in the target process.
 
-This is more evasive because some applications will hook into LoadLibrary to detect the dlls being loaded
-However, it is very complicated because you have to emulate everything LoadLibrary does
+This is more evasive because some applications will hook into LoadLibrary to detect the dlls being loaded.
+However, it is very complicated because you have to emulate everything LoadLibrary does.
 
 Solution uses VS2022.
 For a simple DLL injection demonstration, see Injector project.
